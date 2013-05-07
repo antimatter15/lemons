@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Project Lemonade</title>
+		<style>
+			body {
+				background-color: whiteSmoke;
+				font-family: sans-serif;
+			}
+			button {
+				border: 1px solid gray;
+				margin: 3px;
+				padding: 7px;
+				border-radius: 7px;
+			}
+			.mac {
+				background-color: #A3B0B1;
+				padding: 7px;
+				border: none;
+				border-radius: 7px;
+				margin: 3px;
+				font: 10px sans-serif;
+				color: white;
+				user-select: none;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				min-width: 50px;
+			}
+			button:hover {
+				box-shadow: 0px 0px 5px #007fff;
+			}
+			hr {
+				border: none;
+				border-bottom: 1px solid #D1D1D1;
+			}
+			div.mac {
+
+				display: inline-block;
+			}
+			.mac .name {
+				text-transform: uppercase;
+				font-style: italic;
+				color: rgb(68, 68, 68);
+			}
+			.mac .user {
+				font-weight: bold;
+			}
+			.mac.online {
+				background-color: #2ecc71;
+			}
+			.mac.dud { background-color: #2c3e50; min-width: 0; }
+
+			.row.up>.mac {
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				border-bottom: 2px solid #34495e;
+			}
+			.row.down>.mac {
+				border-top-right-radius: 0;
+				border-top-left-radius: 0;
+				border-top: 2px solid #34495e;
+			}
+			.row.left>.mac {
+				border-bottom-left-radius: 0;
+				border-top-left-radius: 0;
+				border-left: 2px solid #34495e;
+				width: 50px;
+			}
+			.row.right>.mac {
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 0;
+				border-right: 2px solid #34495e;
+				width: 50px;
+			}
+			body {
+				padding: 10px;
+
+			}
+		</style>
+
+		<div id="pubnub" pub-key="pub-c-1feb89bd-fe5b-46f5-8fb4-85df202a9c47" sub-key="sub-c-df29bace-b1d7-11e2-a940-02ee2ddab7fe"></div>
+		<script src="http://cdn.pubnub.com/pubnub-3.4.min.js"></script>
+		<script src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+	</head>
+	<body>
+		<table>
+		<tr>
+			<td rowspan="4">
+				<table>
+					<tr>
+						<td colspan="2">
+							<button id="update">Update</button>
+						</td>
+						<td>
+						<div class="row right">
+							<button class="mac" id="S1">
+								<span class="user">18</span>
+								<span class="name">s1</span>
+							</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						<div class="row left">
+							<button class="mac" id="B2">
+								<span class="user">4</span>
+								<span class="name">b2</span>
+							</button>
+							</div>
+						</td>
+						<td>
+						<div class="row right">
+							<button class="mac" id="S2">
+								<span class="user">1</span>
+								<span class="name">s2</span>
+							</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<div class="row left">
+							<button class="mac" id="B1">
+								<span class="user">4</span>
+								<span class="name">b1</span>
+							</button>
+							</div>
+						</td>
+						<td>
+						<div class="row left">
+							<button class="mac" id="B3">
+								<span class="user">4</span>
+								<span class="name">b3</span>
+							</button>
+							</div>
+						</td>
+						<td>
+						<div class="row right">
+							<button class="mac" id="S3">
+								<span class="user">4</span>
+								<span class="name">s3</span>
+							</button>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+			<div class="row up">
+				<button class="mac" id="F1">
+					<span class="user">Shriya</span>
+					<span class="name">3</span>
+				</button>
+				<button class="mac" id="F2">
+					<span class="user">17</span>
+					<span class="name">17</span>
+				</button>
+				<div class="mac dud" id="F3">
+					<span class="user">dead</span>
+					<span class="name"></span>
+				</div>
+				<button class="mac" id="F4">
+					<span class="user">8</span>
+					<span class="name">8</span>
+				</button>
+				<button class="mac" id="F5">
+					<span class="user">9</span>
+					<span class="name">9</span>
+				</button>
+				<button class="mac" id="F6">
+					<span class="user">10</span>
+					<span class="name">10-8</span>
+				</button>
+				<button class="mac" id="F7">
+					<span class="user">11</span>
+					<span class="name">s-imac-62</span>
+				</button>
+				<button class="mac" id="F8">
+					<span class="user">31</span>
+					<span class="name">s-imac-9</span>
+				</button>
+				<button class="mac" id="F9">
+					<span class="user">12</span>
+					<span class="name">s-imac-222</span>
+				</button>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="row down">
+					<button class="mac" id="U1">
+						<span class="user">20</span>
+						<span class="name">idk</span>
+					</button>
+					<button class="mac" id="U2">
+						<span class="user">19</span>
+						<span class="name">idk</span>
+					</button>
+					<button class="mac" id="U3">
+						<span class="user">7</span>
+						<span class="name">s-imac32</span>
+					</button>
+					<button class="mac" id="U4">
+						<span class="user">19</span>
+						<span class="name">19</span>
+					</button>
+					<button class="mac" id="U5">
+						<span class="user">?</span>
+						<span class="name">idk</span>
+					</button>
+					<button class="mac" id="U6">
+						<span class="user">15</span>
+						<span class="name">s-imac-7</span>
+					</button>
+					<button class="mac" id="U7">
+						<span class="user">14</span>
+						<span class="name">s-imac-10</span>
+					</button>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="row up">
+					<button class="mac" id="L1">
+						<span class="user">20</span>
+						<span class="name">21-3</span>
+					</button>
+					<button class="mac" id="L2">
+						<span class="user">22</span>
+						<span class="name">22-4</span>
+					</button>
+					<button class="mac" id="L3">
+						<span class="user">23</span>
+						<span class="name">idk</span>
+					</button>
+					<button class="mac" id="L4">
+						<span class="user">ahs4</span>
+						<span class="name">slow</span>
+					</button>
+					<button class="mac" id="L5">
+						<span class="user">25</span>
+						<span class="name">25</span>
+					</button>
+					<button class="mac" id="L6">
+						<span class="user">26</span>
+						<span class="name">ahs05</span>
+					</button>
+					<button class="mac" id="L7">
+						<span class="user">24</span>
+						<span class="name">s-imac-14</span>
+					</button>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="row down">
+					<button class="mac" id="W1">
+						<span class="user">32</span>
+						<span class="name">s-imac-4</span>
+					</button>
+					<button class="mac" id="W2">
+						<span class="user">30</span>
+						<span class="name">s-imac-18</span>
+					</button>
+					<div style="display: inline-block">
+						
+					</div>
+				</div>
+			</td>
+		</tr>
+		</table>
+		<hr>
+		<h1 id="compid" style="display: inline"></h1>
+		<span style="font-style: italic; margin-left: 10px">Last online <span id="componline"></span></span>
+
+		<script src="main.js"></script>
+	</body>
+</html>
